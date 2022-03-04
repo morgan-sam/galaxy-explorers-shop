@@ -6,21 +6,26 @@
         "heading": {
           "type": "heading",
           "settings": {
+            "heading": "Image with text overlay",
             "heading_size": "large"
           }
         },
         "text": {
           "type": "text",
           "settings": {
+            "text": "Give customers details about the banner image(s) or content on the template.",
+            "text_style": "subtitle"
           }
         },
         "button": {
           "type": "buttons",
           "settings": {
-            "button_label_1": "Shop all",
-            "button_link_1": "shopify:\/\/collections\/all",
+            "button_label_1": "Shop Now",
+            "button_link_1": "shopify:\/\/products\/galaxy-box",
             "button_style_secondary_1": true,
-            "button_label_2": ""
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
           }
         }
       },
@@ -30,120 +35,259 @@
         "button"
       ],
       "settings": {
-        "image_overlay_opacity": 40,
+        "image": "shopify:\/\/shop_images\/homepage_slider_2_c9868b47-85a1-47a0-9c85-ba5b50a27dd6.jpg",
+        "image_overlay_opacity": 0,
         "image_height": "large",
-        "desktop_content_position": "bottom-center",
+        "adapt_height_first_image": false,
+        "desktop_content_position": "middle-center",
         "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "center",
         "stack_images_on_mobile": false,
         "show_text_below": false
       }
     },
-    "rich_text": {
-      "type": "rich-text",
+    "1646338094b6d2a324": {
+      "type": "image-with-text",
       "blocks": {
-        "heading": {
+        "1646338094e42671cf-0": {
           "type": "heading",
           "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
           }
         },
-        "text": {
+        "1646338094e42671cf-1": {
           "type": "text",
           "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
-        "heading",
-        "text"
+        "1646338094e42671cf-0",
+        "1646338094e42671cf-1"
       ],
       "settings": {
-        "padding_top": 40,
-        "padding_bottom": 0
+        "image": "shopify:\/\/shop_images\/homepage_1.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "title": "Featured products",
-        "collection": "all",
-        "products_to_show": 8,
-        "show_view_all": false,
-        "show_secondary_image": true,
-        "padding_top": 28
-      }
-    },
-    "collage": {
-      "type": "collage",
+    "164633822693b2c537": {
+      "type": "image-with-text",
       "blocks": {
-        "collection-0": {
-          "type": "collection",
+        "164633822646cb59a3-0": {
+          "type": "heading",
           "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
           }
         },
-        "product": {
-          "type": "product",
+        "164633822646cb59a3-1": {
+          "type": "text",
           "settings": {
-          }
-        },
-        "collection-1": {
-          "type": "collection",
-          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
           }
         }
       },
       "block_order": [
-        "collection-0",
-        "product",
-        "collection-1"
+        "164633822646cb59a3-0",
+        "164633822646cb59a3-1"
       ],
       "settings": {
+        "image": "shopify:\/\/shop_images\/homepage_2.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "text_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 100,
+        "padding_bottom": 100
       }
     },
-    "video": {
-      "type": "video",
+    "16463382780891a15d": {
+      "type": "image-with-text",
+      "blocks": {
+        "16463382788a62ddf6-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Image with text",
+            "heading_size": "h1"
+          }
+        },
+        "16463382788a62ddf6-1": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Pair text with an image to focus on your chosen product, collection, or blog post. Add details on availability, style, or even provide a review.<\/p>",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "16463382788a62ddf6-0",
+        "16463382788a62ddf6-1"
+      ],
       "settings": {
-        "heading": ""
+        "image": "shopify:\/\/shop_images\/homepage_3.jpg",
+        "height": "adapt",
+        "desktop_image_width": "medium",
+        "layout": "image_first",
+        "desktop_content_position": "middle",
+        "desktop_content_alignment": "left",
+        "content_layout": "no-overlap",
+        "color_scheme": "background-1",
+        "mobile_content_alignment": "left",
+        "padding_top": 36,
+        "padding_bottom": 36
       }
     },
-    "multicolumn": {
+    "16464074679edb5069": {
       "type": "multicolumn",
       "blocks": {
-        "column1": {
+        "1646407467ec29e69d-0": {
           "type": "column",
           "settings": {
+            "title": "",
+            "text": "<p>“Great service, great clothes and FAST delivery!! Loved the dress, now buying more! Happy!”<\/p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "column2": {
+        "1646407467ec29e69d-1": {
           "type": "column",
           "settings": {
+            "title": "",
+            "text": "<p>“I have ordered and received several items now, and I have to say, I am in love with this store!!!! Everything I have received fit perfectly, and is good quality”<\/p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "column3": {
+        "1646407467ec29e69d-2": {
           "type": "column",
           "settings": {
+            "title": "",
+            "text": "<p>“Everything has been spot on, fits wonderfully, styles are trendy and lots to choose from!!”<\/p>",
+            "link_label": "",
+            "link": ""
           }
         }
       },
       "block_order": [
-        "column1",
-        "column2",
-        "column3"
+        "1646407467ec29e69d-0",
+        "1646407467ec29e69d-1",
+        "1646407467ec29e69d-2"
+      ],
+      "settings": {
+        "title": "Testimonials",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "color_scheme": "background-1",
+        "padding_top": 80,
+        "padding_bottom": 80
+      }
+    },
+    "1646417769392d2cb8": {
+      "type": "rich-text",
+      "blocks": {
+        "1646417769feef4fd5-0": {
+          "type": "heading",
+          "settings": {
+            "heading": "Instagram",
+            "heading_size": "h1"
+          }
+        }
+      },
+      "block_order": [
+        "1646417769feef4fd5-0"
+      ],
+      "settings": {
+        "color_scheme": "background-1",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "164641745453e45ff0": {
+      "type": "multicolumn",
+      "blocks": {
+        "16464174542c8a63ab-0": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/instagram_2.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "16464174542c8a63ab-1": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/homepage_3.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "2fd51751-377c-4e9f-adf9-0f5d43e9b817": {
+          "type": "column",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/instagram_4.jpg",
+            "title": "",
+            "text": "",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "16464174542c8a63ab-0",
+        "16464174542c8a63ab-1",
+        "2fd51751-377c-4e9f-adf9-0f5d43e9b817"
       ],
       "settings": {
         "title": "",
-        "image_width": "third",
+        "image_width": "full",
+        "image_ratio": "square",
         "column_alignment": "center",
         "background_style": "none",
-        "button_label": ""
+        "button_label": "",
+        "button_link": "",
+        "swipe_on_mobile": false,
+        "color_scheme": "background-1",
+        "padding_top": 20,
+        "padding_bottom": 36
       }
     }
   },
   "order": [
     "image_banner",
-    "rich_text",
-    "featured_collection",
-    "collage",
-    "video",
-    "multicolumn"
+    "1646338094b6d2a324",
+    "164633822693b2c537",
+    "16463382780891a15d",
+    "16464074679edb5069",
+    "1646417769392d2cb8",
+    "164641745453e45ff0"
   ]
 }
