@@ -32,6 +32,7 @@
   <link id="ModelViewerOverride" rel="stylesheet" href="{{ 'component-model-viewer-ui.css' | asset_url }}" media="print" onload="this.media='all'">
 {%- endif -%}
 
+
 <section class="page-width section-{{ section.id }}-padding">
   <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.gallery_layout }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
     <div class="grid__item product__media-wrapper">
@@ -188,7 +189,21 @@
       <div id="ProductInfo-{{ section.id }}" class="product__info-container{% if section.settings.enable_sticky_info %} product__info-container--sticky{% endif %}">
         {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
+        {% assign is_affiliate = false %}
+        {% assign product_tags_string = product.tags | join: '' %}
+	    {% if product_tags_string contains 'affiliate' %}
+			{% assign is_affiliate = true %}
+		{% endif %}
+        
+        {% assign affiliate_skip_blocks = "price,variant_picker,quantity_selector,buy_buttons,collapsible_tab,"%}
+
+        
         {%- for block in section.blocks -%}
+        
+        	{% if affiliate_skip_blocks contains block.type and is_affiliate %}
+            	{% continue %}
+  			{% endif %}
+        
           {%- case block.type -%}
           {%- when '@app' -%}
             {% render block %}
@@ -200,7 +215,11 @@
             <h1 class="product__title" {{ block.shopify_attributes }}>
               {{ product.title | escape }}
             </h1>
-            <div>⭐⭐⭐⭐⭐</div> 
+        
+          {% if is_affiliate == false %} 
+              <div>⭐⭐⭐⭐⭐</div> 
+          {% endif %} 
+
           {%- when 'price' -%}
             <div class="no-js-hidden" id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
               {%- render 'price', product: product, use_variant: true, show_badges: true, price_class: 'price--large' -%}
@@ -221,7 +240,18 @@
                 {{ form | payment_terms }}
               {%- endform -%}
             </div>
-          {%- when 'description' -%}
+          {%- when 'description' -%}     
+        
+            {% if is_affiliate %} 
+                 <a
+                    class="product-form__submit button button--full-width"
+                    href="{{product_tags_string | remove: "affiliate_"}}"
+                    target="_blank"
+				 >
+                   See On Amazon
+        		 </a>
+            {% endif %} 
+        
             {%- if product.description != blank -%}
               <div class="product__description rte">
                 {{ product.description }}
