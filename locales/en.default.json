@@ -202,6 +202,9 @@
       "form": {
         "name": "Name",
         "email": "Email",
+        "business_name": "Business name",
+        "website": "Website",
+        "business_type": "Business type",
         "phone": "Phone number",
         "order_number": "Order number",
         "comment": "Comment",

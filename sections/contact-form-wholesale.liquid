@@ -64,16 +64,31 @@
         </div>
       </div>
 
+      <div class="contact__fields">
+        <div class="field">
+          <input class="field__input" autocomplete="name" type="text" id="ContactForm-business_name" name="contact[{{ 'templates.contact.form.business_name' | t }}]" value="{% if form.business_name %}{{ form.business_name }}{% elsif customer %}{{ customer.business_name }}{% endif %}" placeholder="{{ 'templates.contact.form.business_name' | t }}">
+          <label class="field__label" for="ContactForm-business_name">{{ 'templates.contact.form.business_name' | t }}</label>
+        </div>
+        <div class="field">
+          <input class="field__input" autocomplete="url" type="text" id="ContactForm-website" name="contact[{{ 'templates.contact.form.website' | t }}]" value="{% if form.website %}{{ form.website }}{% elsif customer %}{{ customer.website }}{% endif %}" placeholder="{{ 'templates.contact.form.website' | t }}">
+          <label class="field__label" for="ContactForm-website">{{ 'templates.contact.form.website' | t }}</label>
+        </div>
+      </div>
+      <div class="field">
+        <select type="text" id="ContactForm-business_type" class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.business_type' | t }}]" pattern="[0-9\-]*" value="{% if form.business_type %}{{ form.business_type }}{% elsif customer %}{{ customer.business_type }}{% endif %}" placeholder="{{ 'templates.contact.form.business_type' | t }}">
+          {% assign business_type_options = section.settings.business_types | split: ", " %}
+          	{%- for business_type in business_type_options -%}
+              <option value="{{business_type}}">{{business_type | capitalize}}</option>
+            {% endfor %}
+        </select>
+        <label class="field__label" for="ContactForm-business_type">{{ 'templates.contact.form.business_type' | t }}</label>
+      </div>
+
       <div class="field">
         <input type="tel" id="ContactForm-phone" class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
         <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
       </div>
-      {% if section.settings.show_order_number_input %}
-      <div class="field">
-        <input type="text" id="ContactForm-order_number" class="field__input" autocomplete="text" name="contact[{{ 'templates.contact.form.order_number' | t }}]" pattern="[0-9]*" value="{% if form.order_number %}{{ form.order_number }}{% elsif customer %}{{ customer.order_number }}{% endif %}" placeholder="{{ 'templates.contact.form.order_number' | t }}">
-        <label class="field__label" for="ContactForm-order_number">{{ 'templates.contact.form.order_number' | t }}</label>
-      </div>
-      {% endif %}
+
       <div class="field">
         <textarea
           rows="10"
@@ -101,6 +116,11 @@
   "tag": "section",
   "class": "section",
   "settings": [
+    {
+      "type": "text",
+      "id": "business_types",
+      "label": "Business Types (Comma-Seperated)"
+    },
     {
       "type": "text",
       "id": "heading",
@@ -134,12 +154,6 @@
       ],
       "default": "background-1",
       "label": "t:sections.all.colors.label"
-    },
-    {
-      "type": "checkbox",
-      "id": "show_order_number_input",
-      "label": "Show Order Number Input",
-      "default": true
     },
     {
       "type": "header",
