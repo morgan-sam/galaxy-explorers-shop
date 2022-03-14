@@ -1,6 +1,9 @@
 {{ 'section-gallery.css' | asset_url | stylesheet_tag }}
 
 {% style %}
+.title-container{
+	text-align: center;
+}
 .gallery-container {
 	display: grid;
 	grid-template-columns: repeat({{section.settings.images_per_column}}, {{section.settings.image_size}}px);
@@ -15,6 +18,11 @@
 }
 {% endstyle %}
 
+<div class="title-container">
+	{%- if section.settings.gallery_title != blank -%}
+	<h1>{{section.settings.gallery_title}}</2>
+	{%- endif -%}
+</div>
 <div class="gallery-container">
 	{%- for block in section.blocks -%}
 		{%- if block.settings.image != blank -%}
@@ -37,6 +45,12 @@
 {
     "name": "Gallery",
 	"settings": [
+		{
+			"type": "text",
+			"id": "gallery_title",
+			"label": "Gallery Title",
+			"default": "My Gallery"
+		},
 		{
 			"type": "number",
 			"id": "images_per_column",
