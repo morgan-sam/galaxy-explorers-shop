@@ -1,0 +1,136 @@
+{{ 'section-gallery.css' | asset_url | stylesheet_tag }}
+
+{% style %}
+.gallery-container {
+	display: grid;
+	grid-template-columns: repeat({{section.settings.images_per_column}}, {{section.settings.image_size}}px);
+	justify-content: center;
+	box-sizing: border-box;
+}
+.gallery-image {
+  object-fit: cover;
+  width: {{ section.settings.image_size }}px;
+  height: {{ section.settings.image_size }}px;
+  padding: {{ section.settings.image_margin | times: 0.25 }}px;
+}
+{% endstyle %}
+
+<div class="gallery-container">
+	{%- for block in section.blocks -%}
+		{%- if block.settings.image != blank -%}
+			<img
+				style="object-position: {{block.settings.image_horizontal_position}} {{block.settings.image_vertical_position}};"
+				class="gallery-image"
+				src="{{ block.settings.image | img_url: '550x' }}"
+				alt="{{ block.settings.image.alt }}"
+				loading="lazy"
+			>
+        {%- else -%}
+        	{{ 'image' | placeholder_svg_tag: 'placeholder-svg' }}
+        {%- endif -%}
+	{%- endfor -%}
+</div>
+
+
+
+{% schema %}
+{
+    "name": "Gallery",
+	"settings": [
+		{
+			"type": "number",
+			"id": "images_per_column",
+			"label": "Images per column",
+			"default": 2
+		},
+		{
+			"type": "number",
+			"id": "image_size",
+			"label": "Image size",
+			"default": 400
+		},
+		{
+			"type": "range",
+			"id": "image_margin",
+			"label": "Image margin",  
+			"min": 0,
+			"max": 100,
+			"step": 1,
+			"unit": "px",
+			"default": 16
+		}
+	],
+    "blocks": [
+        {
+            "type": "feature",
+            "name": "Image",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image",
+                    "label": "Image",
+                    "info": "640px x 640px .jpg recommended"
+                },
+                {
+                    "type": "select",
+                    "id": "image_horizontal_position",
+                    "label": "Image horizontal position",
+					"options": [
+						{
+						"value": "left",
+						"label": "Left"
+						},
+						{
+						"value": "center",
+						"label": "Center"
+						},
+						{
+						"value": "right",
+						"label": "Right"
+						}
+					],
+					"default": "center"
+                },
+                {
+                    "type": "select",
+                    "id": "image_vertical_position",
+                    "label": "Image vertical position",
+					"options": [
+						{
+						"value": "top",
+						"label": "Top"
+						},
+						{
+						"value": "center",
+						"label": "Center"
+						},
+						{
+						"value": "bottom",
+						"label": "Bottom"
+						}
+					],
+					"default": "center"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gallery",
+			"blocks": [
+				{
+					"type": "feature"
+				},
+				{
+					"type": "feature"
+				},
+				{
+					"type": "feature"
+				}
+     		]
+        }
+    ]
+}
+{% endschema %}
+{% javascript %}
+{% endjavascript %}

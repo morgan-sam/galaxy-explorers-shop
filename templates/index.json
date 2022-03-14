@@ -279,6 +279,63 @@
         "padding_top": 20,
         "padding_bottom": 36
       }
+    },
+    "1647254220f01cfe46": {
+      "type": "gallery",
+      "blocks": {
+        "164725422077291c21-0": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/homepage_slider_2_4fba729c-1a4d-44ca-86ce-59e88fe184a3.jpg",
+            "image_horizontal_position": "center",
+            "image_vertical_position": "center"
+          }
+        },
+        "164725422077291c21-1": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/instagram_2.jpg",
+            "image_horizontal_position": "center",
+            "image_vertical_position": "bottom"
+          }
+        },
+        "164725422077291c21-2": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/homepage_slider_2_3001579f-20b3-4eba-bbf9-b515d557151a.jpg",
+            "image_horizontal_position": "center",
+            "image_vertical_position": "center"
+          }
+        },
+        "beedd21c-1cd1-4bc8-a411-ed90f9d93bfa": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/homepage_3.jpg",
+            "image_horizontal_position": "center",
+            "image_vertical_position": "center"
+          }
+        },
+        "46cc790e-53c0-4ded-aa92-8269a4fa8fcb": {
+          "type": "feature",
+          "settings": {
+            "image": "shopify:\/\/shop_images\/instagram_1.jpg",
+            "image_horizontal_position": "center",
+            "image_vertical_position": "center"
+          }
+        }
+      },
+      "block_order": [
+        "164725422077291c21-0",
+        "164725422077291c21-1",
+        "164725422077291c21-2",
+        "beedd21c-1cd1-4bc8-a411-ed90f9d93bfa",
+        "46cc790e-53c0-4ded-aa92-8269a4fa8fcb"
+      ],
+      "settings": {
+        "images_per_column": 3,
+        "image_size": 300,
+        "image_margin": 65
+      }
     }
   },
   "order": [
@@ -288,6 +345,7 @@
     "16463382780891a15d",
     "16464074679edb5069",
     "1646417769392d2cb8",
-    "164641745453e45ff0"
+    "164641745453e45ff0",
+    "1647254220f01cfe46"
   ]
 }
