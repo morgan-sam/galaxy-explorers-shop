@@ -243,13 +243,13 @@
           {%- when 'description' -%}     
         
             {% if is_affiliate %} 
-                 <a
-                    class="product-form__submit button button--full-width"
-                    href="{{product_tags_string | remove: "affiliate_"}}"
-                    target="_blank"
-				 >
-                   See On Amazon
-        		 </a>
+              <a
+                class="product-form__submit button button--full-width"
+                href="{{product_tags_string | remove: "affiliate_"}}"
+                target="_blank"
+              >
+                {{ 'products.product.affiliate' | t }}
+        		  </a>
             {% endif %} 
         
             {%- if product.description != blank -%}
