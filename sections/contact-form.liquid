@@ -67,6 +67,12 @@
         <input type="tel" id="ContactForm-phone" class="field__input" autocomplete="tel" name="contact[{{ 'templates.contact.form.phone' | t }}]" pattern="[0-9\-]*" value="{% if form.phone %}{{ form.phone }}{% elsif customer %}{{ customer.phone }}{% endif %}" placeholder="{{ 'templates.contact.form.phone' | t }}">
         <label class="field__label" for="ContactForm-phone">{{ 'templates.contact.form.phone' | t }}</label>
       </div>
+      {% if section.settings.show_order_number_input %}
+      <div class="field">
+        <input type="text" id="ContactForm-order_number" class="field__input" autocomplete="text" name="contact[{{ 'templates.contact.form.order_number' | t }}]" pattern="[0-9]*" value="{% if form.order_number %}{{ form.order_number }}{% elsif customer %}{{ customer.order_number }}{% endif %}" placeholder="{{ 'templates.contact.form.order_number' | t }}">
+        <label class="field__label" for="ContactForm-order_number">{{ 'templates.contact.form.order_number' | t }}</label>
+      </div>
+      {% endif %}
       <div class="field">
         <textarea
           rows="10"
@@ -127,6 +133,12 @@
       ],
       "default": "background-1",
       "label": "t:sections.all.colors.label"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_order_number_input",
+      "label": "Show Order Number Input",
+      "default": true
     },
     {
       "type": "header",
