@@ -1598,7 +1598,12 @@
           "name": "Pickup availability"
         },
         "description": {
-          "name": "Description"
+          "name": "Description",
+          "settings": {
+            "text": {
+              "shipping_information": "Shipping information"
+            }
+          }
         },
         "share": {
           "name": "Share",

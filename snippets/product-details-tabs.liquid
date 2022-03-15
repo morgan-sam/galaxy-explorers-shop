@@ -1,0 +1,124 @@
+{% style %}
+    .container {
+        width: 80%;
+        height: 50%;
+    }
+    .selector {
+        display: flex;
+        border-bottom: 2px solid #ccc;
+        line-height: 4rem;
+    }
+    .tab {
+        padding: 10px;
+    }
+    .tab:hover {
+        cursor: pointer;
+        text-decoration: underline;
+        font-size: 110%;
+    }
+    .content {
+        padding: 10px;
+    }
+    .content-body {
+        display: none;
+    }
+    .show-active {
+        display: block;
+        animation: fade 1s;
+    }
+    .tab-active {
+        text-decoration: underline;
+    }
+    .details-table {
+        border-collapse: collapse;
+    }
+    .details-table, .details-table-row, .details-table-cell {
+        border: 1px solid #eee;
+    }
+    .details-table-cell {
+        padding: 1rem;
+    }
+    @keyframes fade {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity:1;
+        }
+    }
+{% endstyle %}
+    
+<div class="container">
+    <div class="selector">
+        <div class="tab tab-active">
+            Description
+        </div>
+        {% if product.metafields.description.details != blank %}
+        <div class="tab">
+            Details
+        </div>
+        {% endif %}
+        <div class="tab">
+            Shipping
+        </div>
+    </div>
+    <div class="content">
+        <div id="Description" class="content-body show-active">
+            <h4>{{ product.description }}</h4>
+        </div>
+        {% if product.metafields.description.details != blank %}
+        <div id="Details" class="content-body">
+            <table class="details-table">
+                {% assign table_rows = product.metafields.description.details | split: "," %}
+                {% for row in table_rows %}
+                <tr class="details-table-row">
+                    {% assign row_cells = row | split: ":" %}
+                    {% for cell in row_cells %}
+                        <td class="details-table-cell">{{cell}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        {% endif %}
+        <div id="Shipping" class="content-body">
+            <p>{{block.settings.shipping_information}}</p>
+        </div>
+    </div>
+</div>
+
+
+
+<script>
+    // function to remove show-active class & add to clicked
+    function setActiveContent(el) {
+        // select all .content-body
+        var contentBodies = document.getElementsByClassName('content-body');
+        // remove .show-active
+        for (var contentBody of contentBodies) {
+            contentBody.classList.remove('show-active');
+        }
+        // add .show-active (back) to clicked 
+        document.
+            getElementById(el.textContent.trim())
+            .classList.add('show-active');
+    }
+
+    function setActiveTab(el){
+        var tabs = document.getElementsByClassName('tab');
+        for (var tab of tabs) {
+            tab.classList.remove('tab-active');
+        }
+        el.classList.add('tab-active');
+    }
+
+    // select .tab class, and loop through
+    var tabs = document.getElementsByClassName('tab');
+    for (var tab of tabs) {
+        // add click listener to each tab
+        tab.addEventListener('click', function(e) {
+            setActiveContent(e.currentTarget);
+            setActiveTab(e.currentTarget);
+        })
+    }
+</script>

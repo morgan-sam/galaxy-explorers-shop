@@ -52,6 +52,7 @@
         "description": {
           "type": "description",
           "settings": {
+            "shipping_information": "Your order will be shipped the same, or next, business day. During sale events and holidays, there may be a slightly longer duration."
           }
         },
         "collapsible-row-0": {
