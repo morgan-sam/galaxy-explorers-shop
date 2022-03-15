@@ -2,7 +2,58 @@
   "sections": {
     "main": {
       "type": "faq",
+      "blocks": {
+        "9e10cb3c-dcee-4820-85df-dfaca19246eb": {
+          "type": "headline",
+          "settings": {
+            "title": "Orders"
+          }
+        },
+        "53bcff47-1475-4950-a52d-c6cfbed4242b": {
+          "type": "QA",
+          "settings": {
+            "title": "Can I change or cancel my order?",
+            "answer": "<p>All orders are final once they have been processed through the checkout.            Unfortunately, no further changes can be made to your order once processed including and not limited to;             removing and\/or adding items to your order, combining orders or cancelling your order.<\/p>"
+          }
+        },
+        "6281c995-e21e-4f6e-823f-836f7c1a72c1": {
+          "type": "QA",
+          "settings": {
+            "title": "What delivery times?",
+            "answer": "<p>Your order will be shipped the same, or next, business day.             During sale events and holidays, there may be a slightly longer duration.<\/p>"
+          }
+        },
+        "ebb774ca-c2ab-452b-90f5-0342adce74c3": {
+          "type": "headline",
+          "settings": {
+            "title": "Product"
+          }
+        },
+        "7f8b84ce-aa25-4a63-a8fb-4b559406c41c": {
+          "type": "QA",
+          "settings": {
+            "title": "Can I get my product personalized?",
+            "answer": "<p>All options are outlined on the product page, so look out for customization options there.<\/p>"
+          }
+        },
+        "afdd5800-c40d-4a90-9a0c-0054594923bb": {
+          "type": "QA",
+          "settings": {
+            "title": "Is the projector easy to install?",
+            "answer": "<p>Yes! All functions are self-explanatory.<\/p>"
+          }
+        }
+      },
+      "block_order": [
+        "9e10cb3c-dcee-4820-85df-dfaca19246eb",
+        "53bcff47-1475-4950-a52d-c6cfbed4242b",
+        "6281c995-e21e-4f6e-823f-836f7c1a72c1",
+        "ebb774ca-c2ab-452b-90f5-0342adce74c3",
+        "7f8b84ce-aa25-4a63-a8fb-4b559406c41c",
+        "afdd5800-c40d-4a90-9a0c-0054594923bb"
+      ],
       "settings": {
+        "heading": ""
       }
     }
   },

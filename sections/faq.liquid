@@ -1,29 +1,109 @@
 
-<h1>{{section.settings.heading}}</h1>
+{{ 'section-faq.css' | asset_url | stylesheet_tag }}
 
-<h3>{{section.settings.question}}</h3>
+{% style %}
+ .faq {
+     border-radius: 8px;
+     overflow: hidden;
+	 max-width: 60rem;
+	 margin: 0 auto;
+}
+/* hide checkbox */
+ .faq .question-toggle {
+     display: none;
+}
+/* style the label */
+ .faq .question-label {
+     background-color: #0c007a;
+     display:flex;
+     justify-content: space-between;
+     padding:1em;
+     font-weight: bold;
+     color:white;
+	 cursor: pointer;
+}
+ .faq .question-label:hover{
+     background-color: #1900fa;
+}
+ .faq .question-toggle:checked ~.question-label {
+     background-color: #1900fa;
+}
+ .faq .question-label::after {
+     content:'\276F';
+     transition: all .4s;
+}
+ .faq .question-toggle:checked ~ .question-label::after {
+     transform: rotate(90deg);
+}
+/* only show text when checkbox is checked */
+ .faq .answer {
+     background-color: white;
+     max-height: 0px;
+     overflow: hidden;
+     transition: all .4s;
+     padding: 0 1em;
+}
+ .faq .question-toggle:checked ~ .answer {
+     max-height: 100vh;
+     padding:1em;
+}
 
-<p>{{section.settings.answer}}</p>
+{% endstyle %}
 
+
+<div class="faq">
+	<h1>{{section.settings.heading}}</h1>
+	{% for block in section.blocks %}
+		{% if block.type == "QA" %}
+			<div class="question">
+				<input type="checkbox" id="question-{{block.id}}" class="question-toggle">
+				<label for="question-{{block.id}}" class="question-label">{{block.settings.title}}</label>
+				<div class="answer">{{block.settings.answer}}</div>
+			</div>
+		{% else %}
+			<h1>{{block.settings.title}}</h1>
+		{% endif %}
+	{% endfor %}
+</div>
 
 {% schema %}
 {
-	"name": "customer questions",
-	"settings": [{
-			"type": "text",
-			"label": "heading for faq",
-			"id": "heading"
-		},
-		{
-			"type": "text",
-			"label": "customer questions",
-			"id": "question"
-		},
-		{
-			"type": "textarea",
-			"label": "answer for faq",
-			"id": "answer"
-		}
-	]
+   "name":"customer questions",
+   "settings":[
+      {
+         "type":"text",
+         "label":"heading for faq",
+         "id":"heading"
+      }
+   ],
+   "blocks":[
+      {
+         "type":"QA",
+         "name":"Question/Answer",
+         "settings":[
+            {
+               "type":"text",
+               "label":"customer questions",
+               "id":"title"
+            },
+            {
+               "type":"richtext",
+               "label":"answer for faq",
+               "id":"answer"
+            }
+         ]
+      },
+      {
+         "type":"headline",
+         "name":"Headline",
+         "settings":[
+            {
+               "type":"text",
+               "label":"headline",
+               "id":"title"
+            }
+         ]
+      }
+   ]
 }
 {% endschema %}
