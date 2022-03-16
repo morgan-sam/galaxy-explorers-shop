@@ -53,7 +53,7 @@
         <div class="tab tab-active">
             Description
         </div>
-        {% if product.metafields.description.details != blank %}
+        {% if product.metafields.description.eu_details != blank or product.metafields.description.us_details != blank %}
         <div class="tab">
             Details
         </div>
@@ -66,10 +66,21 @@
         <div id="Description" class="content-body show-active">
             <h4>{{ product.description }}</h4>
         </div>
-        {% if product.metafields.description.details != blank %}
         <div id="Details" class="content-body">
-            <table class="details-table">
-                {% assign table_rows = product.metafields.description.details | split: "," %}
+        {% assign current_variant = product.selected_or_first_available_variant %}
+            <table id="us-details-table" class="details-table {% if current_variant.option2 == 'EU' %}hidden{% endif %}">
+                {% assign table_rows = product.metafields.description.us_details | split: "," %}
+                {% for row in table_rows %}
+                <tr class="details-table-row">
+                    {% assign row_cells = row | split: ":" %}
+                    {% for cell in row_cells %}
+                        <td class="details-table-cell">{{cell}}</td>
+                    {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            <table id="eu-details-table" class="details-table {% if current_variant.option2 == 'US' %}hidden{% endif %}">
+                {% assign table_rows = product.metafields.description.eu_details | split: "," %}
                 {% for row in table_rows %}
                 <tr class="details-table-row">
                     {% assign row_cells = row | split: ":" %}
@@ -80,12 +91,12 @@
                 {% endfor %}
             </table>
         </div>
-        {% endif %}
         <div id="Shipping" class="content-body">
             <p>{{block.settings.shipping_information}}</p>
         </div>
     </div>
 </div>
+        {{description_details}}
 
 
 
