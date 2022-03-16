@@ -48,12 +48,14 @@
     }
 {% endstyle %}
     
+
+{% assign current_variant = product.selected_or_first_available_variant %}
 <div class="container">
     <div class="selector">
         <div class="tab tab-active">
             Description
         </div>
-        {% if product.metafields.description.eu_details != blank or product.metafields.description.us_details != blank %}
+        {% if current_variant.metafields.details.dimensions != blank or current_variant.metafields.details.frequency != blank or current_variant.metafields.details.voltage != blank or current_variant.metafields.details.wattage != blank %}
         <div class="tab">
             Details
         </div>
@@ -67,28 +69,23 @@
             <h4>{{ product.description }}</h4>
         </div>
         <div id="Details" class="content-body">
-        {% assign current_variant = product.selected_or_first_available_variant %}
-            <table id="us-details-table" class="details-table {% if current_variant.option2 == 'EU' %}hidden{% endif %}">
-                {% assign table_rows = product.metafields.description.us_details | split: "," %}
-                {% for row in table_rows %}
+            <table id="eu-details-table" class="details-table">
                 <tr class="details-table-row">
-                    {% assign row_cells = row | split: ":" %}
-                    {% for cell in row_cells %}
-                        <td class="details-table-cell">{{cell}}</td>
-                    {% endfor %}
+                    <td class="details-table-cell">Dimensions</td>
+                    <td id="details-dimensions" class="details-table-cell">{{current_variant.metafields.details.dimensions}}</td>
                 </tr>
-                {% endfor %}
-            </table>
-            <table id="eu-details-table" class="details-table {% if current_variant.option2 == 'US' %}hidden{% endif %}">
-                {% assign table_rows = product.metafields.description.eu_details | split: "," %}
-                {% for row in table_rows %}
                 <tr class="details-table-row">
-                    {% assign row_cells = row | split: ":" %}
-                    {% for cell in row_cells %}
-                        <td class="details-table-cell">{{cell}}</td>
-                    {% endfor %}
+                    <td class="details-table-cell">Frequency</td>
+                    <td id="details-frequency" class="details-table-cell">{{current_variant.metafields.details.frequency}}</td>
                 </tr>
-                {% endfor %}
+                <tr class="details-table-row">
+                    <td class="details-table-cell">Voltage</td>
+                    <td id="details-voltage" class="details-table-cell">{{current_variant.metafields.details.voltage}}</td>
+                </tr>
+                <tr class="details-table-row">
+                    <td class="details-table-cell">Wattage</td>
+                    <td id="details-wattage" class="details-table-cell">{{current_variant.metafields.details.wattage}}</td>
+                </tr>
             </table>
         </div>
         <div id="Shipping" class="content-body">
@@ -96,8 +93,6 @@
         </div>
     </div>
 </div>
-        {{description_details}}
-
 
 
 <script>
@@ -131,5 +126,24 @@
             setActiveContent(e.currentTarget);
             setActiveTab(e.currentTarget);
         })
+    }
+</script>
+
+<script id="detailsJson">
+    {
+        {% for variant in product.variants %}
+        "{{variant.id}}": {
+            "dimensions": "{{variant.metafields.details.dimensions}}",
+            "frequency": "{{variant.metafields.details.frequency}}",
+            "voltage": "{{variant.metafields.details.voltage}}",
+            "wattage": "{{variant.metafields.details.wattage}}"
+        }{%unless forloop.last %},{% endunless %}
+        {% endfor %}
+    }
+</script>
+<script>
+    var detailsJson = document.getElementById('detailsJson');
+    if (detailsJson) {
+        document.variantDetails = JSON.parse(detailsJson.innerHTML)
     }
 </script>

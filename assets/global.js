@@ -744,9 +744,6 @@ class VariantSelects extends HTMLElement {
   constructor() {
     super();
     this.addEventListener('change', this.onVariantChange);
-    this.usTable = document.getElementById('us-details-table');
-    this.euTable = document.getElementById('eu-details-table');
-
   }
 
 
@@ -767,20 +764,16 @@ class VariantSelects extends HTMLElement {
       this.renderProductInfo();
       this.updateShareUrl();
     }
-    this.updateCountryDetails();
-
+    this.updateDetails();
   }
 
-  updateCountryDetails() {
-
-    if (this.usTable && this.euTable) {
-      if (this.currentVariant.title.includes('US')) {
-        this.euTable.classList.add("hidden");
-        this.usTable.classList.remove("hidden");
-      } else if (this.currentVariant.title.includes('EU')) {
-        this.euTable.classList.remove("hidden");
-        this.usTable.classList.add("hidden");
-      }
+  updateDetails() {
+    var detailsTab = document.getElementById("Details");
+    if (detailsTab && document.variantDetails) {
+      document.getElementById('details-dimensions').innerHTML = document.variantDetails[this.currentVariant.id]['dimensions'];
+      document.getElementById('details-frequency').innerHTML = document.variantDetails[this.currentVariant.id]['frequency'];
+      document.getElementById('details-voltage').innerHTML = document.variantDetails[this.currentVariant.id]['voltage'];
+      document.getElementById('details-wattage').innerHTML = document.variantDetails[this.currentVariant.id]['wattage'];
     }
   }
 
