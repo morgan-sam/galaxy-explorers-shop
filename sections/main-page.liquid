@@ -19,7 +19,7 @@
 {%- endstyle -%}
 
 <div class="page-width page-width--narrow section-{{ section.id }}-padding">
-  <h1 class="main-page-title page-title h0">
+  <h1 class="main-page-title page-title h0" style="text-align: {{section.settings.title_text_alignment}}">
     {{ page.title | escape }}
   </h1>
   <div class="rte">
@@ -56,6 +56,26 @@
       "unit": "px",
       "label": "t:sections.all.padding.padding_bottom",
       "default": 36
+    },
+    {
+      "type": "select",
+      "id": "title_text_alignment",
+      "label": "t:sections.all.padding.title_text_alignment",
+      "default": "left",
+      "options": [
+        {
+          "value": "left",
+          "label": "Left"
+        },
+        {
+          "value": "center",
+          "label": "Center"
+        },
+        {
+          "value": "right",
+          "label": "Right"
+        }
+      ]
     }
   ]
 }
